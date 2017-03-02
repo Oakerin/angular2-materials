@@ -1,3 +1,41 @@
-<h1>
-  {{title}}
-</h1>
+<md-toolbar color="primary">
+  <button md-icon-button class="example-fab" (click)="sidenav.toggle()">
+	<md-icon>format_align_center</md-icon>
+  </button>
+  <span class="spacer"></span>
+  <span>Right Aligned Text</span>
+</md-toolbar>
+
+<md-sidenav-container>
+
+	<md-sidenav #sidenav mode="side" opened="true">
+		
+		<md-list>
+			<h3 md-subheader>Folders</h3>
+			<button md-icon-button class="example-fab" (click)="sidenav.toggle()">
+				<md-icon>add</md-icon>
+			</button>
+			<md-list-item *ngFor="let folder of folders">
+				<md-icon md-list-avatar>folder</md-icon>
+				<h4 md-line>{{folder.name}}</h4>
+				<p md-line> {{folder.updated | date}} </p>
+			</md-list-item>
+			<md-divider></md-divider>
+			<h3 md-subheader>Notes</h3>
+			<md-list-item *ngFor="let note of notes">
+				<md-icon md-list-avatar>note</md-icon>
+				<h4 md-line>{{note.name}}</h4>
+				<p md-line> {{note.updated | date}} </p>
+			</md-list-item>
+		</md-list>
+		
+	</md-sidenav>
+
+	<div class="my-content">
+		<span>Main content</span>
+		<button md-fab><md-icon>check</md-icon></button>
+		<button md-fab color="warn"><md-icon>close</md-icon></button>
+
+	</div>
+
+</md-sidenav-container>
